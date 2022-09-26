@@ -13,24 +13,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*
+|--------------------------------------------------------------------------
+| Routes management
+|--------------------------------------------------------------------------
+|
+*/
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 ////basic routes
-Route::get('/about', function() {
-    // return 'whatever';
-    return 9*9;
-});
+// Route::get('/about', function() {
+//     // return 'whatever';
+//     return 9*9;
+// });
 ////end of basic routes
 
 ////view routes
 // Route::get('/contact', function() {
 //     return view('contact');
 // });
-Route::get('/contact', function() {
-    return view('contact', ['name' => 'isak', 'phone' => '0812...']);
-});
+// Route::get('/contact', function() {
+//     return view('contact', ['name' => 'isak', 'phone' => '0812...']);
+// });
 
 //simple way
 //Route::view('/contact', 'contact');
@@ -38,7 +45,7 @@ Route::get('/contact', function() {
 ////end of view routes
 
 ////redirect routes
-Route::redirect('/contact', '/contact-us');
+// Route::redirect('/contact', '/contact-us');
 ////end of redirect routes
 
 ////route parameters
@@ -55,15 +62,35 @@ Route::redirect('/contact', '/contact-us');
 ////end of route parameters
 
 ////route prefixes
-Route::prefix('administrator')->group(function () {
-    Route::get('/users', function () {
-        // Matches The "/admin/users" URL
-        return 'this is users';
-    });
+// Route::prefix('administrator')->group(function () {
+//     Route::get('/users', function () {
+//         // Matches The "/admin/users" URL
+//         return 'this is users';
+//     });
     
-    Route::get('/profile-admin', function() {
-        return 'this is profile admin';
-    });
+//     Route::get('/profile-admin', function() {
+//         return 'this is profile admin';
+//     });
 
-});
+// });
 ////end of route prefixes
+
+
+/*
+|--------------------------------------------------------------------------
+| Blade Templating
+|--------------------------------------------------------------------------
+|
+*/
+Route::get('/', function () {
+    return view('home', [
+        'name' => 'Isak',
+        'role' => 'Admin',
+        'fruit' => ['banana', 'watermelon', 'mango', 'orange', 'apple']
+    ]);
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
+
