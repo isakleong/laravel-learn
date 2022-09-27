@@ -1,0 +1,26 @@
+DATABASE MIGRATION
+
+table migrations
+column batch
+--> keterangan : misal batch nya adalah 3, lalu di rollback, lalu di migrate lagi, batch nya tetap sama
+--> keterangan : misal sudah ada batch 1, 2, dan 3. Lalu dirollback step=2, maka sisa batch 1 aja. ketika migrate lagi, 2 dan 3 akan terbuat dengan batch yg sama yaitu 2.
+
+php artisan migrate
+untuk create database di php my admin sesuai schema yg ada
+
+php artisan make:migration create_students_table atau create_table_students
+untuk generate migration file di folder database --> migrations
+untuk nama disarankan sesuai yg direkomendasikan laravel (yg penting jelas bisa baca nama tabelnya)
+sebenarnya bisa jika tidak mengikuti rekomendasi tsb, cuma nanti filenya kebuat tanpa schema
+
+php artisan make:migration add_gender_column_to_students_table
+command ini kan buat file migration baru dengan schema table students, tpi isinya belum ada, diisi sendiri
+
+php artisan migrate:rollback
+rollback migration
+
+php artisan migrate:rollback --step=2
+rollback multiple migration
+
+composer require doctrine/dbal
+command ini dijalankan jika ingin merubah attribute column di tabel. Misal kolom gender di table students, mau diubah length nya atau tipe datanya atau nullable nya dsb
